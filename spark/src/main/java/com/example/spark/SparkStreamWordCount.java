@@ -99,7 +99,7 @@ public class SparkStreamWordCount {
          //等待spark程序被终止
          jsc.awaitTermination();
          jsc.stop(false);
-    // spark spark study new study spark
+
 	}
 
 }
