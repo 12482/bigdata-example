@@ -9,8 +9,6 @@ import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 
-import com.example.spark.bean.MyDescCompare;
-
 import scala.Tuple2;
 
 public class SparkTopN {
@@ -29,7 +27,12 @@ public class SparkTopN {
 		classrdd.groupByKey().map(oneClass -> {
 			String className = oneClass._1;
 			//降序排序的treeset，只保留topN个元素
-			TreeSet<String> topSet = new TreeSet<String>(new MyDescCompare<String>());
+//			TreeSet<String> topSet = new TreeSet<String>(new MyDescCompare<String>());
+			TreeSet<String> topSet =	new TreeSet<String>(( String x,String y)->  {
+				int score1 = Integer.valueOf(x.toString().split(",")[2]);
+				int score2 = Integer.valueOf(y.toString().split(",")[2]);
+				return score2 -score1;
+			});
 			for (String str : oneClass._2) {
 				topSet.add(str);
 				if (topSet.size() > topN) {
@@ -38,6 +41,8 @@ public class SparkTopN {
 			}
 			return topSet;
 		}).foreachPartition(s -> s.forEachRemaining(System.out :: println));
+		//foreach ，每个元素执行一次
+		//foreachPartition , 每个分区执行一次
 		jsc.stop();
 
 	}
