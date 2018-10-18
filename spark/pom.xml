@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.example</groupId>
+    <artifactId>bigdata</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>spark</artifactId>
+  
+  
+  	<repositories>
+		<repository>
+			<id>nexus</id>
+			<name>GDPrivateMavenRepo</name>
+			<url>http://mvnrepo.code.singhand.com/nexus/content/groups/gdmaven</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+
+		<pluginRepository>
+			<id>nexus</id>
+			<name>GDPrivateMavenRepo</name>
+			<url>http://mvnrepo.code.singhand.com/nexus/content/groups/gdmaven</url>
+		</pluginRepository>
+
+	</pluginRepositories>
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-streaming -->
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-streaming_2.11</artifactId>
+			<version>2.2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
+<dependency>
+    <groupId>org.apache.spark</groupId>
+    <artifactId>spark-core_2.11</artifactId>
+    <version>2.2.0</version>
+</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.scala-lang/scala-library -->
+<!-- <dependency>
+    <groupId>org.scala-lang</groupId>
+    <artifactId>scala-library</artifactId>
+    <version>2.11.8</version>
+</dependency> -->
+		
+	</dependencies>
+</project>
